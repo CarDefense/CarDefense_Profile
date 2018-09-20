@@ -17,12 +17,16 @@ Para instalação do projeto você deve ter instalado:
 ### Como instalar
 
 1 - Clone o repositório
+
 2 - Entre a pasta do projeto
+
 3 - Rode o comando:
 ```
 sudo docker-compose up
 ```
+
 4 - Acesse localhost:8000
+
 
 Para acessar o container da aplicação use o seguinte comando:
 ```
