@@ -22,7 +22,9 @@ Para instalação do projeto você deve ter instalado:
 ```
 sudo docker-compose up
 ```
+
 4 - Acesse localhost:8000
+
 
 Para acessar o container da aplicação use o seguinte comando:
 ```
