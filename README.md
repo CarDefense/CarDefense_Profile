@@ -1,6 +1,6 @@
 # CarDefense Profile
 ![CI status](https://img.shields.io/badge/build-passing-brightgreen.svg)
-![Django](https://img.shields.io/badge/django-2.1-blue.svg)
+![Django Rest](https://img.shields.io/badge/django--rest--framework-3.7.7-orange.svg)
 ![Python](https://img.shields.io/badge/python-3.6-ff69b4.svg)
 
 ## Microsserviço de gerencimanento de usuários
@@ -17,7 +17,7 @@ Para instalação do projeto você deve ter instalado:
 ### Como instalar
 
 1 - Clone o repositório
-2 - Entre a pasta do projeto
+2 - Entre na pasta do projeto
 3 - Rode o comando:
 ```
 sudo docker-compose up
