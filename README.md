@@ -17,7 +17,9 @@ Para instalação do projeto você deve ter instalado:
 ### Como instalar
 
 1 - Clone o repositório
+
 2 - Entre na pasta do projeto
+
 3 - Rode o comando:
 ```
 sudo docker-compose up
