@@ -1,3 +1,8 @@
-# from django.db import models
+from django.db import models
+from django.contrib.postgres.fields import ArrayField, JSONField
 
-# Create your models here.
+
+class Profile(models.Model):
+    id_user = models.IntegerField()
+    notification_token = models.CharField(max_length=50)
+    notification = ArrayField(JSONField(True))
