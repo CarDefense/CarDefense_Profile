@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
-from django.conf.urls import include
-from user_profile.views import ProfileViewSet
+from django.conf.urls import include, url
+from user_profile.views import ProfileViewSet, notification_token
 
 
 router = routers.SimpleRouter()
@@ -26,4 +26,5 @@ router.register(r'profiles', ProfileViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    url(r'^notification_token/$', notification_token)
 ]
