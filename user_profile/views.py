@@ -25,6 +25,18 @@ def get_notification_token(request):
 
     return Response(token)
 
+
+@api_view(["POST"])
+def get_cars(request):
+
+    notification_token = request.data['notification_token']
+
+    cars = []
+    for t in CarProfile.objects.filter(notification_token=notification_token):
+        cars.append(t.plate)
+
+    return Response(cars)
+
 # @api_view(["POST"])
 # def notification_token(request):
 #
