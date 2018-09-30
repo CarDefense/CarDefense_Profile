@@ -9,6 +9,10 @@ class CarProfileViewSet(ModelViewSet):
     queryset = CarProfile.objects.all()
     serializer_class = CarProfileSerializer
 
+    def get_queryset(self):
+        token = self.request.query_params.get("token")
+        return CarProfile.objects.filter(notification_token=token)
+
 
 class ProfileViewSet(ModelViewSet):
     queryset = Profile.objects.all()
@@ -26,16 +30,16 @@ def get_notification_token(request):
     return Response(token)
 
 
-@api_view(["POST"])
-def get_cars(request):
-
-    notification_token = request.data['notification_token']
-
-    cars = []
-    for t in CarProfile.objects.filter(notification_token=notification_token):
-        cars.append(t.plate)
-
-    return Response(cars)
+# @api_view(["POST"])
+# def get_cars(request):
+#
+#     notification_token = request.data['notification_token']
+#
+#     cars = []
+#     for t in CarProfile.objects.filter(notification_token=notification_token):
+#         cars.append(t.plate)
+#
+#     return Response(cars)
 
 # @api_view(["POST"])
 # def notification_token(request):
