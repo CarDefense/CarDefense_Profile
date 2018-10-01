@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
+from django.conf.urls import include, url
+from user_profile.views import CarProfileViewSet, ProfileViewSet, notification_token
+from user_profile.views import get_notification_token, set_notification_token
+
+
+router = routers.SimpleRouter()
+router.register(r'carprofiles', CarProfileViewSet)
+router.register(r'profiles', ProfileViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    url(r'^notification_token/$', notification_token),
+    url(r'^get_notification_token/$', get_notification_token),
+    url(r'^set_notification_token/$', set_notification_token),
 ]
