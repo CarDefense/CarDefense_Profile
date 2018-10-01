@@ -24,12 +24,13 @@ class ProfileViewSet(ModelViewSet):
 def set_notification_token(request):
 
     token = request.data['token']
-    i=0
-    for t in Profile.objects.filter(notification_token=token):
-        if(token==t.notification_token):
-            i+=1
+    i = 0
 
-    if(i==0):
+    for t in Profile.objects.filter(notification_token=token):
+        if(token == t.notification_token):
+            i += 1
+
+    if(i == 0):
         task = {"notification_token": token}
         resp = requests.post('http://68.183.28.199:8005/profiles/', json=task)
         return Response(resp)
