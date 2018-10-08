@@ -4,7 +4,7 @@ services:
   profiledb:
     image: postgres
     ports:
-      - "5433:80"
+      - "5435:80"
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
