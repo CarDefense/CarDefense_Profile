@@ -1,8 +1,8 @@
 from rest_framework import status
 from .models import Profile
-from .views import ProfileViewSet, set_token
-from rest_framework.test import APITestCase, APIClient, APIRequestFactory, RequestsClient
-import json
+from .views import ProfileViewSet
+from rest_framework.test import APITestCase, APIClient, APIRequestFactory
+
 
 class ProfileTests(APITestCase):
     def test_create_profile(self):
@@ -23,12 +23,13 @@ class ProfileTests(APITestCase):
 
     def testing_post(client):
         client = APIClient()
-        client.post('/set_token/', {'id_token': 'new id token', 'notification_token': 'new notification token'}, format='json')
-        
+        client.post('/set_token/',
+                    {'id_token': 'new id token', 'notification_token': 'new notification token'}, format='json')
+
     def testing_get(client):
         client = APIClient()
         client.get('/notification_token/')
-    
+
     def testing_patch(client):
         client = APIClient()
         client.patch('/set_token/', {'notification_token': 'notification test'})
