@@ -26,13 +26,13 @@ def set_token(request):
 
     if(i):
         task = {"notification_token": notification_token}
-        url = 'http://172.20.0.1:8005/profiles/'+str(index)+'/'
+        url = 'http://192.168.15.5:8005/profiles/'+str(index)+'/'
         resp = requests.patch(url, json=task)
         return Response(resp)
 
     else:
         task = {"id_token": id_token, "notification_token": notification_token}
-        resp = requests.post('http://172.20.0.1:8005/profiles/', json=task)
+        resp = requests.post('http://192.168.15.5:8005/profiles/', json=task)
         return Response(resp)
 
 
