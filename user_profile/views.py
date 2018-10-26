@@ -26,13 +26,13 @@ def set_token(request):
 
     if(i):
         task = {"notification_token": notification_token}
-        url = 'http://cardefense.eastus.cloudapp.azure.com:8005/profiles/'+str(index)+'/'
+        url = 'http://cardefense2.eastus.cloudapp.azure.com:8005/profiles/'+str(index)+'/'
         resp = requests.patch(url, json=task)
         return Response(resp)
 
     else:
         task = {"id_token": id_token, "notification_token": notification_token}
-        resp = requests.post('http://cardefense.eastus.cloudapp.azure.com:8005/profiles/', json=task)
+        resp = requests.post('http://cardefense2.eastus.cloudapp.azure.com:8005/profiles/', json=task)
         return Response(resp)
 
 
