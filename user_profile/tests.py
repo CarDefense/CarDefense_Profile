@@ -1,7 +1,4 @@
-from rest_framework import status
-from .models import Profile
-from .views import ProfileViewSet
-from rest_framework.test import APITestCase, APIClient, APIRequestFactory
+from rest_framework.test import APITestCase, APIClient
 
 
 class ProfileTests(APITestCase):
