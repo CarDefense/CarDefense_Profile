@@ -11,14 +11,19 @@ from rest_framework import permissions, status
 # from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken
+from rest_framework.decorators import permission_classes
 
 
 class ProfileViewSet(ModelViewSet):
+
+    permission_classes = (permissions.AllowAny,)
+
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
 
-@api_view(["POST"])
+@api_view(["POST"],)
+@permission_classes([permissions.AllowAny],)
 def set_token(request):
 
     id_token = request.data['id_token']
@@ -43,7 +48,8 @@ def set_token(request):
         return Response(resp)
 
 
-@api_view(["GET"])
+@api_view(["GET"],)
+@permission_classes([permissions.AllowAny],)
 def notification_token(request):
 
     notificationTokenArray = []
@@ -53,7 +59,8 @@ def notification_token(request):
     return Response(notificationTokenArray)
 
 
-@api_view(["POST"])
+@api_view(["POST"],)
+@permission_classes([permissions.AllowAny],)
 def get_notification_token(request):
 
     id_token = request.data['token']
