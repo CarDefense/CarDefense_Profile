@@ -20,9 +20,9 @@ class ProfileTests(APITestCase):
         client = APIClient()
         client.patch('/set_token/', {'notification_token': 'notification test'})
 
-    def testing_post_notification_token(client):
-        client = APIClient()
-        client.post('/get_notification_token/', {'id_token': '1'}, format='json')
+    # def testing_post_notification_token(client):
+    #     client = APIClient()
+    #     client.post('/get_notification_token/', {'id_token': '12871827128'}, format='json')
 
     def testing_current_user(client):
         client = APIClient()

@@ -14,7 +14,6 @@ from .serializers import UserSerializer, UserSerializerWithToken
 from rest_framework.decorators import permission_classes
 
 
-
 class ProfileViewSet(ModelViewSet):
 
     permission_classes = (permissions.AllowAny,)
