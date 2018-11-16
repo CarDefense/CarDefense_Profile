@@ -9,7 +9,7 @@ class ProfileTests(APITestCase):
 
     def testing_post(client):
         client = APIClient()
-        client.post('/set_token/',{'id_token': 1, 'notification_token': 'new notification token'}, format='json')
+        client.post('/set_token/', {'id_token': 1, 'notification_token': 'new notification token'}, format='json')
 
     def testing_get(client):
         client = APIClient()
