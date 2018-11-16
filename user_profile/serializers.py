@@ -1,6 +1,5 @@
-from rest_framework.serializers import ModelSerializer
-from .models import Profile
-# added
+from rest_framework.serializers import ModelSerializer, ImageField
+from .models import Profile, Document
 from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
@@ -12,13 +11,21 @@ class ProfileSerializer(ModelSerializer):
         fields = ('notification_token', 'id_token')
 
 
-class UserSerializer(serializers.ModelSerializer):
+class DocumentSerializer(ModelSerializer):
+    document = ImageField(max_length=None, use_url=True)
+
+    class Meta:
+        model = Document
+        fields = '__all__'
+
+
+class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ('username',)
 
 
-class UserSerializerWithToken(serializers.ModelSerializer):
+class UserSerializerWithToken(ModelSerializer):
 
     token = serializers.SerializerMethodField()
     password = serializers.CharField(write_only=True)

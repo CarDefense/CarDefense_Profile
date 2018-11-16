@@ -2,10 +2,10 @@ from .serializers import ProfileSerializer
 from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from .models import Profile
+from .models import Profile, Document
 from rest_framework import permissions, status
 from rest_framework.views import APIView
-from .serializers import UserSerializer, UserSerializerWithToken
+from .serializers import UserSerializer, UserSerializerWithToken, DocumentSerializer
 from rest_framework.decorators import permission_classes
 
 
@@ -15,6 +15,14 @@ class ProfileViewSet(ModelViewSet):
 
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+
+class DocumentViewSet(ModelViewSet):
+
+    permission_classes = (permissions.AllowAny,)
+
+    queryset = Document.objects.filter(id=0)
+    serializer_class = DocumentSerializer
 
 
 @api_view(["POST"],)
