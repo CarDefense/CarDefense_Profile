@@ -10,3 +10,4 @@ self
 requests
 djangorestframework-jwt
 django-cors-headers
+psycopg2-binary
