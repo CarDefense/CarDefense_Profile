@@ -3,7 +3,6 @@ from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from .models import Profile
-import requests
 from rest_framework import permissions, status
 from rest_framework.views import APIView
 from .serializers import UserSerializer, UserSerializerWithToken
@@ -23,7 +22,7 @@ class ProfileViewSet(ModelViewSet):
 def set_token(request):
 
     id_token = request.data['id_token']
-    defaults = {"notification_token":request.data['notification_token']}
+    defaults = {"notification_token": request.data['notification_token']}
 
     Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
 
