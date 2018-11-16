@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class ProfileSerializer(ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('notification_token', 'id_token')
+        fields = ('id', 'notification_token', 'id_token')
 
 
 class DocumentSerializer(ModelSerializer):

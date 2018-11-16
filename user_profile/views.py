@@ -35,6 +35,16 @@ def set_token(request):
     Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
 
 
+@api_view(["POST"],)
+@permission_classes([permissions.AllowAny],)
+def set_document(request):
+
+    id_token = request.data['id_token']
+    defaults = {"notification_token": request.data['notification_token'], "document": request.data['document']}
+
+    Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
+
+
 @api_view(["GET"],)
 @permission_classes([permissions.AllowAny],)
 def notification_token(request):
