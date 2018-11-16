@@ -32,7 +32,12 @@ def set_token(request):
     id_token = request.data['id_token']
     defaults = {"notification_token": request.data['notification_token']}
 
-    Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
+    profile = Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
+
+    if (profile):
+        return Response("criado/atualizado.")
+    else:
+        return Response("Falha ao criar/atualizar.")
 
 
 @api_view(["POST"],)
@@ -42,7 +47,9 @@ def set_document(request):
     id_token = request.data['id_token']
     defaults = {"notification_token": request.data['notification_token'], "document": request.data['document']}
 
-    Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
+    profile, created = Profile.objects.update_or_create(id_token=id_token, defaults=defaults)
+
+    return Response(created)
 
 
 @api_view(["GET"],)
