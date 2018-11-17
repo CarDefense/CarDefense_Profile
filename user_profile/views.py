@@ -52,13 +52,27 @@ def set_document(request):
     return Response(created)
 
 
+@api_view(["POST"],)
+@permission_classes([permissions.AllowAny],)
+def get_token(request):
+
+    sender_id = request.data['sender_id']
+
+    for profile in Profile.objects.filter(id_token=sender_id):
+        senderToken = profile.notification_token
+
+    return Response(senderToken)
+
+
 @api_view(["GET"],)
 @permission_classes([permissions.AllowAny],)
 def notification_token(request):
 
+
     notificationTokenArray = []
-    for e in Profile.objects.all():
-        notificationTokenArray.append(e.notification_token)
+
+    for token in Profile.objects.all():
+        notificationTokenArray.append(token.notification_token)
 
     return Response(notificationTokenArray)
 
@@ -67,10 +81,15 @@ def notification_token(request):
 @permission_classes([permissions.AllowAny],)
 def get_notification_token(request):
 
-    id_token = request.data['token']
-    for tk in Profile.objects.filter(id_token=id_token):
-        token = tk.notification_token
-    return Response(token)
+    idTokenArray = request.data['token_array']
+
+    notificationTokenArray = []
+
+    for token in idTokenArray:
+        for tk in Profile.objects.filter(id_token=token):
+            notificationTokenArray.append(tk.notification_token)
+
+    return Response(notificationTokenArray)
 
 
 # added
