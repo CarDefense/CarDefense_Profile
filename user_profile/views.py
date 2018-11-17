@@ -68,7 +68,6 @@ def get_token(request):
 @permission_classes([permissions.AllowAny],)
 def notification_token(request):
 
-
     notificationTokenArray = []
 
     for token in Profile.objects.all():
