@@ -5,7 +5,6 @@ from django.test import TestCase
 from rest_framework import status
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
-from rest_framework.test import APIClient
 from rest_framework.response import Response
 
 
@@ -13,6 +12,10 @@ class ProfileTests(APITestCase):
 
     def testing_set_token(self):
         data = {'id_token': 1, 'notification_token': 'new notification token'}
+        self.client.post('/set_token/', data=data)
+
+    def testing_set_token_wrong(self):
+        data = {'id_token': 0, 'notification_token': ''}
         self.client.post('/set_token/', data=data)
 
     def testing_get(self):
@@ -37,8 +40,11 @@ class ProfileTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     # def testing_get_token(self):
-    #     data = {'sender_id': 1}
-    #     self.client.post('/get_token/', data=data)
+    #     data = {'sender_id': 1, 'notification_token': 'abc'}
+    #     self.client.post('/profiles/', data=data)
+    #     key = data["sender_id"]
+    #     data1 = {'sender_id': key}
+    #     self.client.post('/get_token/', data=data1)
 
 
 class UserConfigTest(TestCase):
@@ -54,6 +60,7 @@ class UserListTest(APITestCase):
         serializer = '123'
         response = self.client.post(url, serializer, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
 
 class BaseTestCase(TestCase):
 
